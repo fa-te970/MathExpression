@@ -1,0 +1,14 @@
+<ul>
+  <ng-container *ngFor="let expression of expressions$ | async">
+    <ng-container *ngIf="notExistData(expression); else showExpression">
+      <li>&lt;MISSING DATA&gt;</li>
+    </ng-container>
+    <ng-template #showExpression>
+      <li>
+        {{ expression.number1 }} {{ expression.action === "add" ? "+" : "*" }}
+        {{ expression.number2 }} =
+        {{ getResult(expression) }}
+      </li>
+    </ng-template>
+  </ng-container>
+</ul>
